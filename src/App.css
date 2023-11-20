@@ -1,8 +1,11 @@
 body {
-  max-width: 440px;
+  max-width: 420px;
   margin: 0 auto;
+  font-family: "Rubik", sans-serif;
 }
 h1,
+h2,
+h3,
 p {
   margin: 0;
 }
@@ -74,6 +77,7 @@ p {
 .question {
   position: relative;
   padding: 48px 40px;
+  scroll-behavior: smooth;
 }
 .question .scroll-down {
   position: absolute;
@@ -150,6 +154,58 @@ p {
 }
 .question .nav .arrow-right {
   background-color: #1ba0e1;
+}
+
+.core-values {
+  background-color: #f8f8f8;
+}
+.core-values h1 {
+  color: #029fe4;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 30px;
+  padding-top: 56px;
+  text-align: center;
+}
+.core-values .desc {
+  color: #777;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.16px;
+  margin-top: 24px;
+  padding: 0 25px;
+}
+.core-values .list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+  padding: 0 15px;
+  gap: 24px;
+}
+.core-values .content {
+  display: flex;
+  gap: 18px;
+}
+.core-values .content .line {
+  height: 2px;
+  background-color: #747474;
+  width: 26px;
+  margin-top: 20px;
+}
+.core-values .content h2 {
+  font-size: 24px;
+  line-height: 38px;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.core-values .content p {
+  color: #777;
+  font-size: 16px;
+  line-height: 24px;
+}
+.core-values img {
+  width: 100%;
+  margin-top: 28px;
 }
 
 /* @keyframes App-logo-spin {
