@@ -3,6 +3,8 @@ import "./App.css";
 
 function App() {
   const [questionActive, setQuestionActive] = useState(1);
+  const [specialityActive, setSpecialityActive] = useState(1);
+
   const dataQuestion = [
     {
       id: 1,
@@ -40,6 +42,20 @@ function App() {
       desc: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.",
     },
   ];
+  const dataSpeciality = [
+    {
+      title: "Accesories",
+      image: "/accesories.svg",
+    },
+    {
+      title: "Speed Improvement",
+      image: "/speed.svg",
+    },
+    {
+      title: "Exhaust",
+      image: "/exhaust.svg",
+    },
+  ];
 
   const handleClickLeft = () => {
     if (questionActive !== 1) {
@@ -59,6 +75,50 @@ function App() {
     }
   };
 
+  const handlePrevSpeciality = () => {
+    const slides = document.querySelectorAll(".slide");
+    let activeSlide = specialityActive;
+    const maxSlide = slides.length - 1;
+
+    if (specialityActive === 0) {
+      activeSlide = maxSlide;
+    } else {
+      activeSlide--;
+    }
+
+    slides.forEach((slide, i) => {
+      slide.style.transform = `translateX(${100 * (i - specialityActive)}%)`;
+    });
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      slide.style.transform = `translateX(${
+        (i === activeSlide ? 100 : 50) * (i - activeSlide)
+      }%)`;
+    }
+    setSpecialityActive(activeSlide);
+  };
+
+  const handleNextSpeciality = () => {
+    const slides = document.querySelectorAll(".slide");
+    let activeSlide = specialityActive;
+    const maxSlide = slides.length - 1;
+
+    if (activeSlide < maxSlide) {
+      activeSlide++;
+    } else {
+      activeSlide = 0;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      slide.style.transform = `translateX(${
+        (i === activeSlide ? 100 : 50) * (i - activeSlide)
+      }%)`;
+    }
+    setSpecialityActive(activeSlide);
+  };
+
+  console.log(specialityActive);
   return (
     <div className="App">
       <header className="app-header">
@@ -83,7 +143,7 @@ function App() {
         <a href="#__question">
           <img src="/scroll-down.svg" className="scroll-down" alt="icon" />
         </a>
-        <div className="slide">
+        <div className="question-slider">
           {dataQuestion.map((q) => (
             <div className="wrap" key={q.id} id={`question_${q.id}`}>
               <h1>{q.title}</h1>
@@ -121,8 +181,8 @@ function App() {
         </p>
 
         <div className="list">
-          {dataCoreValues.map((cv) => (
-            <div className="content">
+          {dataCoreValues.map((cv, i) => (
+            <div className="content" key={i}>
               <div className="line" />
               <div>
                 <h2>{cv.title}</h2>
@@ -142,19 +202,21 @@ function App() {
             euismod libero vel leo auctor, in venenatis nulla consequat. Sed
             commodo nunc sit amet congue aliquam.
           </p>
-          <div className="img-slide">
-            <div>
-              <img src="/accesories.svg" alt="icon" />
-              <p>Accesories</p>
-            </div>
-            <div>
-              <img src="/speed.svg" alt="icon" />
-              <p>Speed Improvement</p>
-            </div>
-            <div>
-              <img src="exhaust.svg" alt="icon" />
-              <p>Exhaust</p>
-            </div>
+          <div className="img-slider">
+            {dataSpeciality.map((s, i) => (
+              <div
+                key={i}
+                className="slide"
+                style={{
+                  transform: `translateX(${
+                    (i - specialityActive) * (i === specialityActive ? 100 : 50)
+                  }%)`,
+                }}
+              >
+                <img src={s.image} alt="icon" />
+                <p>{s.title}</p>
+              </div>
+            ))}
           </div>
           <p className="desc2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -162,13 +224,21 @@ function App() {
             commodo nunc sit amet congue aliquam.
           </p>
           <div className="nav">
-            <img src="/arrow-left-grey.svg" alt="icon" />
+            <img
+              src="/arrow-left-grey.svg"
+              alt="icon"
+              onClick={handlePrevSpeciality}
+            />
             <div className="dot">
-              <span className="active" />
-              <span />
-              <span />
+              {dataSpeciality.map((s, i) => (
+                <span className={`${specialityActive === i ? "active" : ""}`} />
+              ))}
             </div>
-            <img src="/arrow-right-blue.svg" alt="icon" />
+            <img
+              src="/arrow-right-blue.svg"
+              alt="icon"
+              onClick={handleNextSpeciality}
+            />
           </div>
         </div>
       </section>
