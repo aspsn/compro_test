@@ -133,6 +133,64 @@ function App() {
         </div>
         <img src="/illustrator.png" alt="img" />
       </section>
+
+      <section className="speciality">
+        <div className="content">
+          <h1>OUR SPECIALITY</h1>
+          <p className="desc1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+            euismod libero vel leo auctor, in venenatis nulla consequat. Sed
+            commodo nunc sit amet congue aliquam.
+          </p>
+          <div className="img-slide">
+            <div>
+              <img src="/accesories.svg" alt="icon" />
+              <p>Accesories</p>
+            </div>
+            <div>
+              <img src="/speed.svg" alt="icon" />
+              <p>Speed Improvement</p>
+            </div>
+            <div>
+              <img src="exhaust.svg" alt="icon" />
+              <p>Exhaust</p>
+            </div>
+          </div>
+          <p className="desc2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+            euismod libero vel leo auctor, in venenatis nulla consequat. Sed
+            commodo nunc sit amet congue aliquam.
+          </p>
+          <div className="nav">
+            <img src="/arrow-left-grey.svg" alt="icon" />
+            <div className="dot">
+              <span className="active" />
+              <span />
+              <span />
+            </div>
+            <img src="/arrow-right-blue.svg" alt="icon" />
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <img src="/logo-footer.svg" className="logo" alt="logo" />
+        <div className="address">
+          <button>
+            TECHNOLOGY DEPARTMENT{" "}
+            <img src="/arrow-bottom-grey.svg" alt="icon" />
+          </button>
+          <p>
+            Jl. Lembong No 8 Kel. Braga Kec. Sumur Bandung, Kota Bandung, Jawa
+            Barat
+          </p>
+        </div>
+        <ul>
+          <li>Who We Are</li>
+          <li>Our Values</li>
+          <li>The Perks</li>
+        </ul>
+      </footer>
     </div>
   );
 }
