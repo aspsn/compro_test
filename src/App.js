@@ -214,7 +214,7 @@ function App() {
                 }}
               >
                 <img src={s.image} alt="icon" />
-                <p>{s.title}</p>
+                {specialityActive === i ? <p>{s.title}</p> : null}
               </div>
             ))}
           </div>
